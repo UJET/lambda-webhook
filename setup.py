@@ -3,11 +3,11 @@ AWS Lambda function to receive GitHub webhooks from API gateway and relay them t
 """
 from setuptools import find_packages, setup
 
-dependencies = ['requests', 'httpretty']
+dependencies = ['boto3', 'requests', 'httpretty']
 
 setup(
     name='lambda-webhook',
-    version='0.1.0',
+    version='0.2.0',
     url='https://github.com/pristineio/lambda-webhook',
     license='BSD',
     author='John Schwinghammer',
@@ -19,6 +19,11 @@ setup(
     zip_safe=False,
     platforms='any',
     install_requires=dependencies,
+    entry_points={
+        'console_scripts': [
+            'lambda-webhook-sqs=lambdawebhook.sqs:cmd',
+        ],
+    },
     classifiers=[
         # As from http://pypi.python.org/pypi?%3Aaction=list_classifiers
         # 'Development Status :: 1 - Planning',
