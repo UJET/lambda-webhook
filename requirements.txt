@@ -2,3 +2,5 @@ tox
 nose
 httpretty
 requests
+boto3
+simplejson
